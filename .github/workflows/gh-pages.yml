@@ -1,4 +1,4 @@
-name: Deploy Node.js Project to GitHub Pages
+name: Deploy Parcel Site to GitHub Pages
 
 on:
   push:
@@ -29,13 +29,13 @@ jobs:
       - name: Install dependencies
         run: npm install
       
-      - name: Build project
-        run: npm start
-      
+      - name: Build project with Parcel
+        run: npm run build  # Builds into "dist/"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist  # Adjust this if your build output is in a different directory
+          path: ./dist  # GitHub Pages will serve this
 
   deploy:
     environment:
